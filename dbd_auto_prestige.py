@@ -3,6 +3,13 @@ import time
 import cv2
 import numpy as np
 import os
+import requests
+import tkinter as tk
+from tkinter import messagebox
+import webbrowser
+import sys
+
+__version__ = "0.9.0"
 
 class Clicker:
     def __init__(self, target_png):
@@ -20,6 +27,56 @@ class Clicker:
         except:
             pass 
 
+def check_for_updates():
+    """ Check for new GitHub releases after the script completes its task. """
+    repo_url = "https://api.github.com/repos/heaslay/DBDAutoBloodweb/releases/latest"
+    
+    try:
+        response = requests.get(repo_url)
+
+        if response.status_code == 404:
+            # Handle the case where no releases are found
+            root = tk.Tk()
+            root.withdraw()  # Hide the root window
+            messagebox.showinfo("No Updates Available", "There are no releases available at this time.")
+            return
+        
+        # Raise other potential errors (e.g., 500 server errors)
+        response.raise_for_status()
+
+        latest_release = response.json()
+
+        # Extract the latest version and URL
+        latest_version = latest_release.get("tag_name", "Unknown")
+        release_url = latest_release.get("html_url", "")
+
+        # Compare the current version with the latest version
+        if latest_version != __version__:
+            # Create a popup with options to Update or Cancel
+            root = tk.Tk()
+            root.withdraw()  # Hide the root window
+
+            result = messagebox.askquestion(
+                "Update Available",
+                f"A new version ({latest_version}) is available!\nWould you like to update?",
+                icon='info'
+            )
+
+            if result == 'yes':
+                # Open the release page in the web browser
+                webbrowser.open(release_url)
+            else:
+                # If the user clicks 'Cancel', exit silently
+                return
+        else:
+            # If the current version is the latest, exit silently
+            return
+    except requests.RequestException as e:
+        # Handle other errors (network issues, etc.)
+        root = tk.Tk()
+        root.withdraw()  # Hide the root window
+        messagebox.showerror("Update Check Failed", "Could not check for updates. Please try again later.")
+
 def resource_path(relative_path):
     """ Get the absolute path to the resource, works for both development and PyInstaller """
     try:
@@ -29,7 +86,6 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 def execute_autoprestige():
-    clicker = Clicker('images/auto_purchase_node.png')
     for _ in range(9):
         clicker.automate_auto_bloodweb()
         time.sleep(5)
@@ -61,7 +117,7 @@ def execute_test_image_search():
         offeringFound = test_image_search('images/survivor_pudding.png', offeringFound, offeringName)
     
     # No offerings available. Proceed with pressing auto node.
-    Clicker.automate_auto_bloodweb()
+    clicker.automate_auto_bloodweb()
 
 def test_image_search(image_path, offeringFound, offeringName):
     try:
@@ -92,6 +148,8 @@ def test_image_search(image_path, offeringFound, offeringName):
     return offeringFound
 
 if __name__ == '__main__':
+    clicker = Clicker('images/auto_purchase_node.png')
     print("Please switch to the Dead By Daylight application within 5 seconds.")
     time.sleep(5)
     execute_autoprestige()
+    check_for_updates()
