@@ -1,0 +1,19 @@
+# Ignore virtual environment
+venv/
+ENV/
+*.pyc
+__pycache__/
+
+# Ignore PyInstaller build directories
+dist/
+build/
+
+# Ignore compiled executables
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore system files
+.DS_Store
+Thumbs.db
