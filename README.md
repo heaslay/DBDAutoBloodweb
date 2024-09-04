@@ -29,8 +29,8 @@ For a smooth prestige process, it is recommended to have **at least 1.15 million
 - **Bloodweb Load Time**: Some systems may experience slow loading times for the Bloodweb. This tool provides extra time between actions, but if you experience issues, ensure your game and system are running smoothly.
 
 ## Future Plans
-- Add **native Linux support**.
-- Improve performance for slower systems.
+- Add more modes that prioritise certain items and add-ons, which Survivors and Killers will have differently.
+- Allow users to choose what they want to prioritise.
 
 ## License
 This project is licensed under the MIT License.
