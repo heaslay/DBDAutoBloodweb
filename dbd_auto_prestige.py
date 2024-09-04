@@ -9,7 +9,7 @@ from tkinter import messagebox
 import webbrowser
 import sys
 
-__version__ = "0.9.0"
+__version__ = "1.0.0"
 
 class Clicker:
     def __init__(self, target_png):
