@@ -9,7 +9,7 @@ from tkinter import messagebox
 import webbrowser
 import sys
 
-__version__ = "1.0.0"
+__version__ = "v1.0.1"
 
 class Clicker:
     def __init__(self, target_png):
@@ -88,15 +88,15 @@ def resource_path(relative_path):
 def execute_autoprestige():
     for _ in range(9):
         clicker.automate_auto_bloodweb()
-        time.sleep(5)
+        time.sleep(5.5)
 
     # Image search and node purchase (for offerings)
     for _ in range(21):
         execute_test_image_search()
-        time.sleep(6)
+        time.sleep(6.5)
     for _ in range(21):
         execute_test_image_search()
-        time.sleep(7)
+        time.sleep(7.5)
 
 def execute_test_image_search():
     offeringFound = True
