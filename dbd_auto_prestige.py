@@ -8,6 +8,7 @@ import tkinter as tk
 from tkinter import messagebox
 import webbrowser
 import sys
+import time
 
 __version__ = "v1.0.1"
 
@@ -34,12 +35,12 @@ def check_for_updates():
     try:
         response = requests.get(repo_url)
 
-        if response.status_code == 404:
+        """if response.status_code == 404:
             # Handle the case where no releases are found
             root = tk.Tk()
             root.withdraw()  # Hide the root window
             messagebox.showinfo("No Updates Available", "There are no releases available at this time.")
-            return
+            return""" #Might no longer be needed - there are releases on Github now.
         
         # Raise other potential errors (e.g., 500 server errors)
         response.raise_for_status()
@@ -148,8 +149,13 @@ def test_image_search(image_path, offeringFound, offeringName):
     return offeringFound
 
 if __name__ == '__main__':
+    #start_time = time.time() - debug, testing for time (section start)
     clicker = Clicker('images/auto_purchase_node.png')
     print("Please switch to the Dead By Daylight application within 5 seconds.")
     time.sleep(5)
     execute_autoprestige()
     check_for_updates()
+    #end_time = time.time()
+    #total_time = end_time - start_time
+    #minutes, seconds = divmod(total_time, 60)
+    #print(f"Execution finished in {int(minutes)} minutes and {seconds:.2f} seconds.") - debug, testing for time (section end)
