@@ -12,15 +12,15 @@ The **Dead By Daylight Auto Prestige Tool** automates the prestige process in De
 
 ## How to Use
 1. **Download the latest release**:
-   - [Download dbd_auto_prestige.exe](https://github.com/heaslay/DBDAutoBloodweb/releases/download/v1.0.1/dbd_auto_prestige.exe)
+   - [Download dbd_auto_prestige.exe](https://github.com/heaslay/DBDAutoBloodweb/releases/download/v1.1.0/dbd_auto_prestige.exe)
 2. **Prepare 1.15 million Bloodpoints**:
    - For a smooth prestige process, make sure you have **at least 1.15 million Bloodpoints** available. This ensures that the tool can purchase all nodes on the Bloodweb without running out of Bloodpoints.
 3. **Make sure your character’s Bloodweb is ready**:
    - Before running the program, make sure the Bloodweb is open and ready in the Dead By Daylight application.
 4. **Run the executable**:
    - Double-click the downloaded `.exe` file.
-5. **Switch to Dead By Daylight**:
-   - The script includes a 5-second delay before it starts. Make sure to switch to the Dead By Daylight application during this time.
+5. **Follow the program**: 
+   - The program will guide you through the setup. You can choose how many prestiges to automate or run in passive mode (with a 5-second delay).
 6. **Automation starts**:
    - The tool will begin purchasing Bloodweb nodes and searching for offerings automatically.
 7. **Update Check**:
