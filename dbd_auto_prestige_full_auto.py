@@ -1,8 +1,8 @@
 import time
 import threading
-from utils import detect_ui_scale, execute_full_auto, check_for_updates, Clicker
+from utils import detect_ui_scale, execute_full_auto, check_for_updates, Clicker, resource_path
 
-__version__ = "v1.0.2"
+__version__ = "v1.1.0"
 
 def get_input_with_timeout(prompt, timeout, default):
     user_input = [default]
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     print("Please switch to the Dead By Daylight application within 5 seconds...")
     time.sleep(5)
-    detected_ui_scale, auto_purchase_coords = detect_ui_scale('images/auto_purchase_node_withBG.png')
+    detected_ui_scale, auto_purchase_coords = detect_ui_scale(resource_path('images/auto_purchase_node_withBG.png'))
     clicker = Clicker(auto_purchase_coords)
 
     for i in range(1, num_prestiges + 1):

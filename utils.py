@@ -71,7 +71,7 @@ def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS  # PyInstaller temporary folder
     except Exception:
-        base_path = os.path.abspath(".")
+        base_path = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(base_path, relative_path)
 
 def multi_scale_search(image, template, scales):
@@ -182,5 +182,6 @@ def execute_test_image_search(clicker):
     for offering in offerings:
         offeringFound = True
         while offeringFound:
-            offeringFound = test_image_search(f'images/{offering}', detected_ui_scale)
+            image_path = resource_path(os.path.join('images', offering))
+            offeringFound = test_image_search(image_path, detected_ui_scale)
     clicker.automate_auto_bloodweb()
